@@ -63,7 +63,7 @@ export default function RsvpForm() {
       <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 text-center">
         <h2 className="text-2xl font-bold text-wedding-red mb-2">Tack!</h2>
         <p className="text-wedding-red-dark">
-          Din anmälan är skickad. Vi ses 2026!
+          Din anmälan är skickad. Kul det ska bli den 17:e oktober!
         </p>
         <button
           type="button"
