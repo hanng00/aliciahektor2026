@@ -57,6 +57,13 @@ export default function Home() {
         <div className="w-full max-w-xl fade-in-up delay-500">
           <RsvpForm />
         </div>
+
+        <p
+          className="text-sm sm:text-base text-white mt-6 tracking-wide font-medium drop-shadow-md fade-in-up delay-500"
+          style={{ textShadow: "1px 1px 4px rgba(139,46,57,0.7)" }}
+        >
+          Inga barn är bjudna på bröllopet.
+        </p>
       </main>
     </div>
   );
