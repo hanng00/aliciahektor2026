@@ -1,12 +1,9 @@
 import Image from "next/image";
 import RsvpForm from "./RsvpForm";
-import BouncingCubes from "./BouncingCubes";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <BouncingCubes />
-
       {/* Background Image with Subtle Pink Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
