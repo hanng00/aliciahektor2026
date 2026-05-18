@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OSA – Alicia & Hektor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Bagel+Fat+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f9f1d7;
+        --blue: #004aad;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; min-height: 100%; }
+      body {
+        background: var(--cream);
+        color: var(--blue);
+        font-family: "Alata", sans-serif;
+      }
+      main {
+        max-width: 36rem;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+      .eyebrow {
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        margin: 0;
+        opacity: 0.7;
+      }
+      h1 {
+        font-family: "Bagel Fat One", cursive;
+        font-weight: 400;
+        font-size: clamp(3rem, 10vw, 7rem);
+        line-height: 0.95;
+        margin: 0;
+      }
+      .osa-card {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(6px);
+        border-radius: 1.25rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 30, 80, 0.22);
+        padding: 2rem;
+        color: var(--blue);
+        text-align: left;
+      }
+      .person {
+        border: 1px solid rgba(0, 74, 173, 0.18);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .person legend {
+        font-weight: 700;
+        padding: 0 0.4rem;
+        letter-spacing: 0.04em;
+      }
+      .person label {
+        display: block;
+        font-size: 0.85rem;
+        margin: 0.75rem 0 0.25rem;
+        letter-spacing: 0.05em;
+      }
+      .person input,
+      .person select,
+      .person textarea {
+        width: 100%;
+        font: inherit;
+        padding: 0.55rem 0.75rem;
+        border: 1px solid rgba(0, 74, 173, 0.25);
+        border-radius: 0.5rem;
+        background: white;
+        color: var(--blue);
+      }
+      .person input:focus,
+      .person select:focus,
+      .person textarea:focus {
+        outline: 2px solid var(--blue);
+        outline-offset: 1px;
+      }
+      .person textarea {
+        resize: vertical;
+        min-height: 3rem;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .btn-secondary,
+      .btn-submit {
+        font: inherit;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 0.7rem 1.2rem;
+        border-radius: 9999px;
+        border: 0;
+        cursor: pointer;
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--blue);
+        border: 1px solid var(--blue);
+      }
+      .btn-submit {
+        background: var(--blue);
+        color: var(--cream);
+        box-shadow: 0 10px 25px rgba(0, 30, 80, 0.22);
+      }
+      .btn-submit:hover,
+      .btn-secondary:hover {
+        filter: brightness(0.95);
+      }
+      a.back {
+        margin-top: 1rem;
+        color: var(--blue);
+        text-decoration: none;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        opacity: 0.6;
+      }
+      a.back:hover { opacity: 1; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">osa</p>
+      <h1>OSA</h1>
+
+      <form class="osa-card" id="osa">
+        <div id="people">
+          <fieldset class="person">
+            <legend>Person 1</legend>
+            <label>Namn</label>
+            <input name="namn1" type="text" required />
+            <div class="row">
+              <div>
+                <label>Närvaro</label>
+                <select name="narvaro1">
+                  <option>Kommer</option>
+                  <option>Kommer inte</option>
+                </select>
+              </div>
+              <div>
+                <label>Specialkost</label>
+                <input name="kost1" type="text" placeholder="(valfritt)" />
+              </div>
+            </div>
+            <label>Övrigt</label>
+            <textarea name="ovrigt1"></textarea>
+          </fieldset>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn-secondary" id="add-person">
+            + Lägg till person
+          </button>
+          <button type="submit" class="btn-submit">Skicka anmälan</button>
+        </div>
+      </form>
+
+      <a class="back" href="/">— tillbaka —</a>
+    </main>
+
+    <script>
+      const peopleEl = document.getElementById("people");
+      document.getElementById("add-person").addEventListener("click", () => {
+        const n = peopleEl.children.length + 1;
+        const tpl = document.createElement("fieldset");
+        tpl.className = "person";
+        tpl.innerHTML = `
+          <legend>Person ${n}</legend>
+          <label>Namn</label>
+          <input name="namn${n}" type="text" required />
+          <div class="row">
+            <div>
+              <label>Närvaro</label>
+              <select name="narvaro${n}">
+                <option>Kommer</option>
+                <option>Kommer inte</option>
+              </select>
+            </div>
+            <div>
+              <label>Specialkost</label>
+              <input name="kost${n}" type="text" placeholder="(valfritt)" />
+            </div>
+          </div>
+          <label>Övrigt</label>
+          <textarea name="ovrigt${n}"></textarea>
+        `;
+        peopleEl.appendChild(tpl);
+      });
+
+      document.getElementById("osa").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const lines = [];
+        const groups = peopleEl.children.length;
+        for (let i = 1; i <= groups; i++) {
+          lines.push(
+            `Person ${i}: ${data.get("namn" + i)} — ${data.get(
+              "narvaro" + i
+            )}; kost: ${data.get("kost" + i) || "-"}; övrigt: ${
+              data.get("ovrigt" + i) || "-"
+            }`
+          );
+        }
+        const body = encodeURIComponent(lines.join("\n"));
+        const subject = encodeURIComponent("OSA - Alicia & Hektor 2026");
+        location.href = `mailto:toast@aliciahektor2026.se?subject=${subject}&body=${body}`;
+      });
+    </script>
+  </body>
+</html>

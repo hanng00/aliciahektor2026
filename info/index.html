@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Info – Alicia & Hektor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Bagel+Fat+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f9f1d7;
+        --blue: #004aad;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; min-height: 100%; }
+      body {
+        background: var(--cream);
+        color: var(--blue);
+        font-family: "Alata", sans-serif;
+      }
+      main {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 3rem 1.5rem;
+      }
+      .eyebrow {
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        margin: 0 0 1.5rem;
+        opacity: 0.7;
+      }
+      h1 {
+        font-family: "Bagel Fat One", cursive;
+        font-weight: 400;
+        font-size: clamp(3rem, 10vw, 7rem);
+        line-height: 0.95;
+        margin: 0;
+      }
+      p.body {
+        max-width: 32rem;
+        margin: 2rem auto 0;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        opacity: 0.85;
+      }
+      h2 {
+        font-family: "Bagel Fat One", cursive;
+        font-weight: 400;
+        font-size: 2rem;
+        margin: 3rem 0 1rem;
+      }
+      .schedule {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-width: 32rem;
+        text-align: left;
+        font-size: 1.05rem;
+        line-height: 1.5;
+      }
+      .schedule li {
+        display: grid;
+        grid-template-columns: 5.5rem 1fr;
+        gap: 1rem;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(0, 74, 173, 0.15);
+      }
+      .schedule li:last-child { border-bottom: 0; }
+      .schedule .time { font-weight: 700; }
+      .schedule .note {
+        display: block;
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-top: 0.15rem;
+      }
+      .between {
+        max-width: 32rem;
+        text-align: left;
+        font-size: 0.95rem;
+        opacity: 0.75;
+        font-style: italic;
+        margin: 0.5rem 0 0;
+      }
+      a.back {
+        margin-top: 3rem;
+        color: var(--blue);
+        text-decoration: none;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        opacity: 0.6;
+      }
+      a.back:hover { opacity: 1; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">info</p>
+      <h1>Info</h1>
+
+      <h2>Hålltider</h2>
+      <ul class="schedule">
+        <li>
+          <span class="time">14:00</span>
+          <span>
+            Vigsel i Nacka kyrka
+            <span class="note">Kom gärna en kvart tidigare så ni inte missar något!</span>
+          </span>
+        </li>
+        <li>
+          <span class="time">16:00</span>
+          <span>
+            Mingel i Lavalhallen
+            <span class="note">Vi går tillsammans från kyrkan till festlokalen.</span>
+          </span>
+        </li>
+        <li>
+          <span class="time">18:00</span>
+          <span>Middag</span>
+        </li>
+        <li>
+          <span class="time">Därefter</span>
+          <span>Fest till sent</span>
+        </li>
+      </ul>
+
+      <h2>Mat &amp; dryck</h2>
+      <p class="body">
+        Vi kommer att bjuda på mat och dryck så att det räcker och blir över.
+        Dryckesväg finns det både med och utan alkohol. Glöm inte att ange
+        eventuella allergier i OSA:n!
+      </p>
+
+      <h2>Klädkod</h2>
+      <p class="body">
+        Färgglatt! Gärna en färgglad kavaj.
+        Inga dova färger — och inget brunt, grått, beige, svart eller vitt.
+      </p>
+
+      <h2>Barn</h2>
+      <p class="body">Inga barn är bjudna på bröllopet.</p>
+
+      <h2>Gåva</h2>
+      <p class="body">
+        Att ni vill fira vår dag med oss räcker gott och väl och vi önskar oss
+        inget annat! OM ni mot förmodan vill ge en gåva till oss önskar vi
+        helst till ett litet bidrag till vår bröllopsresa i Japan.
+      </p>
+
+      <a class="back" href="/">— tillbaka —</a>
+    </main>
+  </body>
+</html>
