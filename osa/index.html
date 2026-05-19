@@ -210,23 +210,49 @@
         peopleEl.appendChild(tpl);
       });
 
-      document.getElementById("osa").addEventListener("submit", (e) => {
+      const form = document.getElementById("osa");
+      const submitBtn = form.querySelector(".btn-submit");
+
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
         const lines = [];
         const groups = peopleEl.children.length;
         for (let i = 1; i <= groups; i++) {
           lines.push(
-            `Person ${i}: ${data.get("namn" + i)} — ${data.get(
+            `Person ${i}:\nNamn: ${data.get("namn" + i)}\nNärvaro: ${data.get(
               "narvaro" + i
-            )}; kost: ${data.get("kost" + i) || "-"}; övrigt: ${
+            )}\nSpecialkost: ${data.get("kost" + i) || "-"}\nÖvrigt: ${
               data.get("ovrigt" + i) || "-"
             }`
           );
         }
-        const body = encodeURIComponent(lines.join("\n"));
-        const subject = encodeURIComponent("OSA - Alicia & Hektor 2026");
-        location.href = `mailto:toast@aliciahektor2026.se?subject=${subject}&body=${body}`;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Skickar…";
+
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: "86e4e5bc-7c93-4346-9e89-d077a1b42628",
+            subject: "OSA bröllop",
+            from_name: "Alicia & Hektor – OSA",
+            message: lines.join("\n\n"),
+          }),
+        });
+
+        if (res.ok) {
+          form.innerHTML =
+            '<p style="text-align:center;font-size:1.1rem;padding:1rem 0;">Tack! Din anmälan är skickad. Vi ses 17 oktober 2026!</p>';
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Skicka anmälan";
+          alert("Något gick fel. Försök igen.");
+        }
       });
     </script>
   </body>
